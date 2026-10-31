@@ -1,7 +1,7 @@
 
 const typing = document.getElementById("typing");
 
-const message = "Mungkin aku tidak selalu pandai mengungkapkan perasaan. Tapi ada satu hal yang ingin kamu tahu, kehadiranmu membuat hari-hariku terasa lebih berwarna. Terima kasih sudah menjadi bagian dari ceritaku.";
+const message = "Mungkin aku tidak selalu pandai mengungkapkan perasaan. Tapi ada satu hal yang ingin kamu tahu, kehadiranmu membuat hari-hariku terasa lebih berwarna. Terima kasih sudah mau menjadi bagian dari ceritaku.";
 
 let index = 0;
 
