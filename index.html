@@ -4,48 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffb6d5">
-    <title>Untuk Seseorang ❤️</title>
-
+    <meta name="theme-color" content="#ffe4ed">
+    <title>Maaf Ya, Sayang ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="hearts" id="hearts"></div>
+    <div class="floating-hearts" id="hearts"></div>
 
     <main class="container">
-        <div class="heart-icon">💗</div>
 
-        <p class="small-text">SEBUAH PESAN UNTUKMU</p>
+        <div class="top-icon">🥺</div>
 
-        <h1>Hai, ayaaaaaa!! ❤️</h1>
+        <p class="subtitle">A LITTLE MESSAGE FOR YOU</p>
 
-        <p class="description">
-            Ada sesuatu yang ingin aku sampaikan kepadamu...
+        <h1>Maafin Aku, Ya? ❤️</h1>
+
+        <p class="intro">
+            Aku tahu mungkin sekarang mood kamu lagi kurang baik.
+            Ada sesuatu yang ingin aku sampaikan...
         </p>
 
-        <div class="card">
-            <h2>Untuk seseorang yang spesial</h2>
+        <section class="letter">
 
-            <p id="typing"></p>
+            <div class="bear">🧸</div>
 
-            <button id="openBtn">
-                Buka Pesan Spesial 💌
+            <h2>Untuk Kamu yang Aku Sayang</h2>
+
+            <div class="letter-content">
+                <p>
+                    Hai, kamu. Sebelumnya aku mau minta maaf,
+                    ya. Aku sadar kalau sikap atau perkataanku
+                    tadi sudah bikin mood kamu rusak.
+                </p>
+
+                <p>
+                    Aku tahu mungkin kamu tadinya lagi senang,
+                    lagi nyaman, atau sedang menikmati harimu.
+                    Tapi karena sikapku, suasana yang tadinya
+                    baik malah jadi berubah.
+                </p>
+
+                <p>
+                    Jujur, aku nggak bermaksud bikin kamu
+                    kecewa, sedih, atau bahkan kepikiran.
+                    Tapi aku juga sadar kalau niat baik saja
+                    nggak cukup kalau ternyata tindakanku
+                    justru bikin kamu nggak nyaman.
+                </p>
+
+                <p>
+                    Aku nggak mau membenarkan kesalahanku.
+                    Kalau memang aku salah, ya aku harus berani
+                    mengakuinya. Maaf karena belum bisa menjaga
+                    perasaan kamu dengan baik.
+                </p>
+
+                <p>
+                    Aku juga nggak akan maksa kamu buat langsung
+                    baik-baik aja. Kalau kamu masih kesal,
+                    kecewa, atau butuh waktu, nggak apa-apa.
+                    Aku menghargai perasaan kamu.
+                </p>
+
+                <p>
+                    Tapi ada satu hal yang ingin aku bilang.
+                    Jangan sampai satu kejadian buruk bikin
+                    kamu lupa kalau masih banyak hal indah
+                    yang bisa bikin kamu tersenyum.
+                </p>
+
+                <p>
+                    Aku pengin jadi seseorang yang bisa
+                    menambah kebahagiaan kamu, bukan malah
+                    menjadi alasan mood kamu berantakan.
+                    Aku akan berusaha memperbaiki sikapku,
+                    bukan cuma lewat kata-kata, tapi juga
+                    lewat tindakan.
+                </p>
+
+                <p>
+                    Sekali lagi, maafin aku, ya.
+                    Terima kasih karena sudah mau membaca
+                    pesan panjang ini.
+                </p>
+
+                <p class="closing">
+                    I’m sorry, and I really care about you. ❤️
+                </p>
+            </div>
+
+        </section>
+
+        <section class="entertainment">
+
+            <div class="fun-icon">🐻💗</div>
+
+            <h2>Jangan Sedih Terus, Dong!</h2>
+
+            <p>
+                Aku punya sedikit hiburan buat kamu.
+                Siapa tahu bisa bikin senyum sedikit hehe.
+            </p>
+
+            <button id="jokeBtn">
+                Kasih Aku Hiburan 😂
             </button>
 
-            <div id="secret" class="secret hidden">
-                <h2>Terima Kasih ❤️</h2>
-                <p>
-                    Terima kasih sudah hadir dalam cerita hidupku.
-                    Semogaa kita bisa bersama sampe selamanya 
-                </p>
-                <div class="big-heart">💖</div>
+            <div id="jokeBox" class="joke-box hidden">
+                <p id="jokeText"></p>
             </div>
-        </div>
 
-        <p class="footer">
-            Dibuat dengan sepenuh hati ❤️
-        </p>
+        </section>
+
+        <section class="final-message">
+
+            <h2>Satu Pertanyaan Terakhir... 🥺</h2>
+
+            <p>
+                Apakah senyum kamu sudah kembali sedikit?
+            </p>
+
+            <div class="buttons">
+                <button id="yesBtn" class="yes">
+                    Sudah, Sedikit ❤️
+                </button>
+
+                <button id="notYetBtn" class="not-yet">
+                    Belum, Masih Kesal 😤
+                </button>
+            </div>
+
+            <div id="response" class="response hidden"></div>
+
+        </section>
+
+        <footer>
+            Dibuat dengan penuh penyesalan dan kasih sayang.
+            <br>
+            From someone who doesn't want to lose your smile ❤️
+        </footer>
+
     </main>
 
     <script src="script.js"></script>
