@@ -1,81 +1,139 @@
 
-const jokeBtn = document.getElementById("jokeBtn");
-const jokeBox = document.getElementById("jokeBox");
-const jokeText = document.getElementById("jokeText");
+document.addEventListener("DOMContentLoaded", function () {
 
-const jokes = [
-    "Kenapa kalender selalu terlihat tenang? Karena dia tahu semua masalah ada tanggal kedaluwarsanya. 😂",
+    // =========================
+    // 1. AMBIL ELEMEN HTML
+    // =========================
 
-    "Apa bedanya kamu sama WiFi? Kalau WiFi bikin koneksi, kalau kamu bikin aku kehilangan fokus. 😭❤️",
+    const jokeBtn = document.getElementById("jokeBtn");
+    const jokeBox = document.getElementById("jokeBox");
+    const jokeText = document.getElementById("jokeText");
 
-    "Kenapa bulan nggak pernah kesepian? Karena selalu ditemani bintang. Kalau aku? Ya ditemani pikiran tentang kamu. 🤣",
+    const yesBtn = document.getElementById("yesBtn");
+    const notYetBtn = document.getElementById("notYetBtn");
+    const response = document.getElementById("response");
 
-    "Aku tadi mau cari obat buat memperbaiki mood kamu, tapi apoteknya bilang stok senyum kamu harus dipulihkan sendiri. 🥺",
+    // Periksa apakah elemen ditemukan
+    if (!jokeBtn || !jokeBox || !jokeText ||
+        !yesBtn || !notYetBtn || !response) {
 
-    "Kalau kamu jadi tugas sekolah, aku nggak akan pernah bilang susah. Soalnya aku mau terus belajar memahami kamu. ❤️",
+        console.error("Ada elemen HTML yang tidak ditemukan!");
 
-    "Kenapa HP nggak pernah bisa bohong? Karena semua perasaannya tersimpan di history. WKWK. 😂"
-];
+        return;
+    }
 
-let lastJoke = -1;
+    // =========================
+    // 2. DATA JOKES
+    // =========================
 
-jokeBtn.addEventListener("click", function() {
+    const jokes = [
+        "Kenapa kalender selalu tenang? Karena semua masalah ada tanggal kedaluwarsanya. 😂",
 
-    let randomIndex;
+        "Apa bedanya kamu sama WiFi? WiFi bikin koneksi, kamu bikin aku kehilangan fokus. 😭❤️",
 
-    do {
-        randomIndex = Math.floor(Math.random() * jokes.length);
-    } while (randomIndex === lastJoke);
+        "Kenapa bulan nggak kesepian? Karena selalu ditemani bintang. Kalau aku ditemani pikiran tentang kamu. 🤣",
 
-    lastJoke = randomIndex;
+        "Aku mau cari obat buat mood kamu, tapi apoteknya bilang stok senyum kamu harus dipulihkan sendiri. 🥺",
 
-    jokeText.textContent = jokes[randomIndex];
+        "Kalau kamu jadi tugas sekolah, aku nggak akan pernah bilang susah. Karena aku mau terus belajar memahami kamu. ❤️",
 
-    jokeBox.classList.remove("hidden");
-
-    jokeBtn.textContent = "Hiburan Lagi 😂";
-});
-
-// Tombol sudah tersenyum
-const yesBtn = document.getElementById("yesBtn");
-const notYetBtn = document.getElementById("notYetBtn");
-const response = document.getElementById("response");
-
-yesBtn.addEventListener("click", function() {
-    response.textContent =
-        "YAY! 🥹❤️ Makasih sudah mau tersenyum lagi. Tapi ingat, aku tetap harus memperbaiki kesalahanku, bukan cuma mengandalkan senyuman kamu. ILY!";
-
-    response.classList.remove("hidden");
-
-    createHeart();
-});
-
-// Tombol masih kesal
-notYetBtn.addEventListener("click", function() {
-    response.textContent =
-        "Hehe, nggak apa-apa. 🥺 Aku nggak akan maksa kamu buat langsung memaafkan aku. Ambil waktu yang kamu butuhkan, ya. Aku tetap menghargai perasaan kamu. ❤️";
-
-    response.classList.remove("hidden");
-});
-
-// Animasi hati
-function createHeart() {
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-    heart.textContent = ["❤️", "💗", "💕", "💖"][
-        Math.floor(Math.random() * 4)
+        "Kenapa HP nggak pernah bohong? Karena semua perasaannya tersimpan di history. WKWK. 😂"
     ];
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = "22px";
-    heart.style.animationDuration = "5s";
+    let lastJoke = -1;
 
-    document.body.appendChild(heart);
+    // =========================
+    // 3. TOMBOL HIBURAN
+    // =========================
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
+    jokeBtn.addEventListener("click", function () {
 
-setInterval(createHeart, 900);
+        let randomIndex;
+
+        do {
+            randomIndex = Math.floor(
+                Math.random() * jokes.length
+            );
+        } while (randomIndex === lastJoke);
+
+        lastJoke = randomIndex;
+
+        jokeText.textContent = jokes[randomIndex];
+
+        jokeBox.classList.remove("hidden");
+
+        jokeBtn.textContent = "Hiburan Lagi 😂";
+
+    });
+
+    // =========================
+    // 4. TOMBOL SUDAH SENYUM
+    // =========================
+
+    yesBtn.addEventListener("click", function () {
+
+        response.textContent =
+            "YAY! 🥹❤️ Makasih sudah mau tersenyum lagi. Tapi aku tetap harus memperbaiki kesalahanku, bukan cuma mengandalkan senyuman kamu. ILY!";
+
+        response.classList.remove("hidden");
+
+        createHeart(15);
+
+    });
+
+    // =========================
+    // 5. TOMBOL MASIH KESEL
+    // =========================
+
+    notYetBtn.addEventListener("click", function () {
+
+        response.textContent =
+            "Hehe, nggak apa-apa. 🥺 Aku nggak akan maksa kamu buat langsung memaafkan aku. Ambil waktu yang kamu butuhkan, ya. Aku tetap menghargai perasaan kamu. ❤️";
+
+        response.classList.remove("hidden");
+
+    });
+
+    // =========================
+    // 6. ANIMASI HATI
+    // =========================
+
+    function createHeart(total = 1) {
+
+        for (let i = 0; i < total; i++) {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.textContent = [
+                "❤️", "💗", "💕", "💖"
+            ][Math.floor(Math.random() * 4)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 20) + "px";
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function () {
+                heart.remove();
+            }, 8000);
+
+        }
+
+    }
+
+    // Hati melayang otomatis
+    setInterval(function () {
+        createHeart();
+    }, 1200);
+
+    console.log("Semua fitur Ungkapan Cinta berhasil dimuat!");
+
+});
