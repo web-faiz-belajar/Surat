@@ -6,140 +6,210 @@
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(
         135deg,
-        #ffb6d5,
-        #e8b5ff,
-        #ffc9e5
+        #ffe4ec,
+        #fff0f5,
+        #f9ddff
     );
+    min-height: 100vh;
+    padding: 25px 15px;
     overflow-x: hidden;
-    padding: 20px;
+    color: #75465c;
 }
 
 .container {
     width: 100%;
-    max-width: 450px;
-    text-align: center;
+    max-width: 480px;
+    margin: auto;
     position: relative;
     z-index: 2;
 }
 
-.heart-icon {
+.top-icon {
+    text-align: center;
     font-size: 65px;
-    animation: beat 1.2s infinite;
+    animation: bounce 2s infinite;
 }
 
-.small-text {
-    margin-top: 15px;
+.subtitle {
+    text-align: center;
+    font-size: 10px;
     letter-spacing: 4px;
-    font-size: 11px;
-    color: #8c4269;
+    margin-top: 15px;
+    color: #c26b94;
     font-weight: bold;
 }
 
 h1 {
-    font-size: 38px;
-    color: #8e285c;
+    text-align: center;
+    font-size: 34px;
+    color: #d34f87;
     margin: 15px 0;
 }
 
-.description {
-    color: #814666;
+.intro {
+    text-align: center;
+    line-height: 1.8;
     font-size: 14px;
     margin-bottom: 25px;
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.75);
-    padding: 30px 22px;
+.letter,
+.entertainment,
+.final-message {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(120, 30, 90, 0.15);
-    backdrop-filter: blur(10px);
+    padding: 25px 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 12px 35px rgba(190, 105, 145, 0.12);
 }
 
-.card h2 {
-    color: #a83270;
-    font-size: 20px;
+.bear {
+    font-size: 55px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+h2 {
+    text-align: center;
+    color: #ce588a;
+    font-size: 21px;
     margin-bottom: 20px;
 }
 
-#typing {
-    min-height: 100px;
+.letter-content p {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 17px;
+    text-align: justify;
+}
+
+.closing {
+    color: #d34f87;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.entertainment {
+    text-align: center;
+}
+
+.fun-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.entertainment p {
+    font-size: 14px;
     line-height: 1.8;
-    color: #70405a;
-    font-size: 15px;
 }
 
 button {
     border: none;
-    padding: 14px 23px;
     border-radius: 30px;
-    background: linear-gradient(135deg, #ff5e9c, #c44dca);
-    color: white;
+    padding: 14px 20px;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 20px;
     cursor: pointer;
-    box-shadow: 0 5px 15px #e78bbd;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 button:active {
     transform: scale(0.94);
 }
 
-.secret {
-    margin-top: 25px;
-    padding: 20px;
-    background: #fff0f7;
-    border-radius: 18px;
-    animation: appear 0.8s ease;
+#jokeBtn {
+    background: linear-gradient(135deg, #ff75a9, #d66de0);
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px #f1b4d0;
 }
 
-.secret p {
-    color: #814666;
+.joke-box {
+    background: #fff0f6;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 18px;
+    animation: appear 0.5s ease;
+}
+
+.joke-box p {
+    color: #b44c7d;
+    font-weight: 600;
+}
+
+.final-message {
+    text-align: center;
+}
+
+.final-message p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.yes {
+    background: #ed76a5;
+    color: white;
+}
+
+.not-yet {
+    background: #fff0f5;
+    color: #c45c86;
+    border: 1px solid #f5bfd4;
+}
+
+.response {
+    margin-top: 20px;
+    padding: 18px;
+    background: #fff0f6;
+    border-radius: 18px;
     line-height: 1.8;
     font-size: 14px;
+    animation: appear 0.5s ease;
 }
 
-.big-heart {
-    font-size: 45px;
-    margin-top: 15px;
+footer {
+    text-align: center;
+    font-size: 11px;
+    line-height: 2;
+    color: #bd7696;
+    padding: 10px 0 25px;
 }
 
 .hidden {
     display: none;
 }
 
-.footer {
-    margin-top: 25px;
-    color: #87456a;
-    font-size: 12px;
-}
-
 .heart {
     position: fixed;
     bottom: -30px;
-    animation: floatUp linear forwards;
     pointer-events: none;
+    animation: floatUp linear forwards;
+    z-index: 1;
 }
 
-@keyframes beat {
+@keyframes bounce {
     50% {
-        transform: scale(1.2);
+        transform: translateY(-10px);
     }
 }
 
 @keyframes appear {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
