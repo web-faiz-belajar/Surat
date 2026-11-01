@@ -1,55 +1,81 @@
 
-const typing = document.getElementById("typing");
+const jokeBtn = document.getElementById("jokeBtn");
+const jokeBox = document.getElementById("jokeBox");
+const jokeText = document.getElementById("jokeText");
 
-const message = "Mungkin aku tidak selalu pandai mengungkapkan perasaan. Tapi ada satu hal yang ingin kamu tahu, kehadiranmu membuat hari-hariku terasa lebih berwarna. Terima kasih sudah mau menjadi bagian dari ceritaku.";
+const jokes = [
+    "Kenapa kalender selalu terlihat tenang? Karena dia tahu semua masalah ada tanggal kedaluwarsanya. 😂",
 
-let index = 0;
+    "Apa bedanya kamu sama WiFi? Kalau WiFi bikin koneksi, kalau kamu bikin aku kehilangan fokus. 😭❤️",
 
-function typeText() {
-    if (index < message.length) {
-        typing.textContent += message.charAt(index);
-        index++;
+    "Kenapa bulan nggak pernah kesepian? Karena selalu ditemani bintang. Kalau aku? Ya ditemani pikiran tentang kamu. 🤣",
 
-        setTimeout(typeText, 45);
-    }
-}
+    "Aku tadi mau cari obat buat memperbaiki mood kamu, tapi apoteknya bilang stok senyum kamu harus dipulihkan sendiri. 🥺",
 
-typeText();
+    "Kalau kamu jadi tugas sekolah, aku nggak akan pernah bilang susah. Soalnya aku mau terus belajar memahami kamu. ❤️",
 
-// Tombol pesan spesial
-const openBtn = document.getElementById("openBtn");
-const secret = document.getElementById("secret");
+    "Kenapa HP nggak pernah bisa bohong? Karena semua perasaannya tersimpan di history. WKWK. 😂"
+];
 
-openBtn.addEventListener("click", function() {
-    secret.classList.toggle("hidden");
+let lastJoke = -1;
 
-    if (secret.classList.contains("hidden")) {
-        openBtn.textContent = "Buka Pesan Spesial 💌";
-    } else {
-        openBtn.textContent = "Tutup Pesan ❤️";
-    }
+jokeBtn.addEventListener("click", function() {
+
+    let randomIndex;
+
+    do {
+        randomIndex = Math.floor(Math.random() * jokes.length);
+    } while (randomIndex === lastJoke);
+
+    lastJoke = randomIndex;
+
+    jokeText.textContent = jokes[randomIndex];
+
+    jokeBox.classList.remove("hidden");
+
+    jokeBtn.textContent = "Hiburan Lagi 😂";
+});
+
+// Tombol sudah tersenyum
+const yesBtn = document.getElementById("yesBtn");
+const notYetBtn = document.getElementById("notYetBtn");
+const response = document.getElementById("response");
+
+yesBtn.addEventListener("click", function() {
+    response.textContent =
+        "YAY! 🥹❤️ Makasih sudah mau tersenyum lagi. Tapi ingat, aku tetap harus memperbaiki kesalahanku, bukan cuma mengandalkan senyuman kamu. ILY!";
+
+    response.classList.remove("hidden");
+
+    createHeart();
+});
+
+// Tombol masih kesal
+notYetBtn.addEventListener("click", function() {
+    response.textContent =
+        "Hehe, nggak apa-apa. 🥺 Aku nggak akan maksa kamu buat langsung memaafkan aku. Ambil waktu yang kamu butuhkan, ya. Aku tetap menghargai perasaan kamu. ❤️";
+
+    response.classList.remove("hidden");
 });
 
 // Animasi hati
-const hearts = document.getElementById("hearts");
-
 function createHeart() {
     const heart = document.createElement("div");
 
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.textContent = ["❤️", "💗", "💕", "💖"][
         Math.floor(Math.random() * 4)
     ];
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 20) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    heart.style.fontSize = "22px";
+    heart.style.animationDuration = "5s";
 
-    hearts.appendChild(heart);
+    document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 8000);
+    }, 5000);
 }
 
-setInterval(createHeart, 600);
+setInterval(createHeart, 900);
