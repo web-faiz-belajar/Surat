@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffb6b9">
+  <title>Untuk Kamu ♡</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="spark spark-one">✦</span><span class="spark spark-two">♡</span>
+    <span class="spark spark-three">✧</span><span class="spark spark-four">♡</span>
+    <span class="floating-heart heart-one">♥</span><span class="floating-heart heart-two">♡</span>
+    <span class="floating-heart heart-three">♥</span>
+  </div>
+
+  <main class="app">
+    <div class="top-note">A LITTLE SOMETHING FOR YOU <span>♡</span></div>
+
+    <section class="screen active" id="welcomeScreen">
+      <div class="hero-icon">♡</div>
+      <p class="eyebrow">HEY, YOU!</p>
+      <h1>Ada sesuatu<br><em>untuk kamu...</em></h1>
+      <p class="subtitle">Aku punya sesuatu yang ingin aku sampaikan.<br>Luangkan sedikit waktumu, ya.</p>
+      <button class="primary-btn" id="startBtn">Buka pesanku <span>♡</span></button>
+      <p class="tiny-note">dibuat dengan sedikit keberanian & banyak rasa</p>
+    </section>
+
+    <section class="screen" id="pinScreen">
+      <div class="mini-flower">✿</div>
+      <p class="eyebrow">JUST A LITTLE SECRET</p>
+      <h2>Masukkan PIN</h2>
+      <p class="subtitle">Ada kejutan kecil yang menunggumu.</p>
+      <div class="pin-dots" id="pinDots" aria-label="PIN kosong">
+        <i></i><i></i><i></i><i></i>
+      </div>
+      <p class="pin-hint" id="pinHint">Petunjuk: tanggal yang punya arti ♡</p>
+      <div class="keypad" id="keypad">
+        <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+        <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+        <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+        <button class="key-muted" data-key="clear">⌫</button><button data-key="0">0</button><button class="key-muted" data-key="enter">↵</button>
+      </div>
+      <button class="text-btn back-btn" data-back="welcomeScreen">Kembali</button>
+    </section>
+
+    <section class="screen" id="letterScreen">
+      <div class="letter-card">
+        <div class="letter-top"><span>♡</span><span>FROM MY HEART</span><span>♡</span></div>
+        <p class="letter-count" id="letterCount">01 / 03</p>
+        <div class="letter-content">
+          <p class="script-label">Dear <span id="recipientName">kamu</span>,</p>
+          <h2 id="letterTitle">Boleh aku jujur?</h2>
+          <p id="letterText" class="letter-text"></p>
+        </div>
+        <div class="letter-bottom"><span>with love,</span><strong id="senderName">Faiz ♡</strong></div>
+      </div>
+      <button class="primary-btn" id="nextLetterBtn">Lanjut <span>→</span></button>
+    </section>
+
+    <section class="screen" id="questionScreen">
+      <div class="big-heart">♡</div>
+      <p class="eyebrow">ONE LAST QUESTION</p>
+      <h1 id="questionTitle">Maukah kamu<br><em>jadi seseorang</em><br>yang spesial buat aku?</h1>
+      <p class="subtitle">Aku nggak mau memaksa. Jawab dengan jujur, ya.</p>
+      <div class="answer-buttons">
+        <button class="primary-btn" id="yesBtn">Iya, mau! ♡</button>
+        <button class="secondary-btn" id="noBtn">Maaf, belum bisa</button>
+      </div>
+    </section>
+
+    <section class="screen" id="yesScreen">
+      <div class="success-icon">♡</div>
+      <p class="eyebrow">A NEW LITTLE CHAPTER</p>
+      <h1>YAY! <em>♡</em></h1>
+      <p class="subtitle">Makasih sudah menerima perasaanku.<br>Aku senang bisa jujur sama kamu.</p>
+      <div class="reply-card">
+        <label for="replyInput">Tulis pesan buat aku (opsional)</label>
+        <textarea id="replyInput" rows="3" placeholder="Tulis sesuatu di sini..."></textarea>
+        <button class="primary-btn" id="copyReplyBtn">Salin pesan <span>♡</span></button>
+        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </div>
+      <p class="tiny-note">semoga ini jadi awal cerita yang baik ✿</p>
+    </section>
+
+    <section class="screen" id="noScreen">
+      <div class="soft-icon">♡</div>
+      <p class="eyebrow">THANK YOU FOR BEING HONEST</p>
+      <h1>Nggak apa-apa <em>♡</em></h1>
+      <p class="subtitle">Makasih sudah membaca pesanku dan menjawab dengan jujur. Aku tetap menghargai keputusanmu. Semoga harimu menyenangkan, ya.</p>
+      <button class="secondary-btn" id="finishBtn">Tutup pesan</button>
+    </section>
+
+    <footer>MADE WITH <span>♥</span> AND A LITTLE COURAGE</footer>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
