@@ -40,7 +40,7 @@ let pageIndex = 0;
 const letterPages = [
   {
     title: "Boleh aku jujur?",
-    text: `Sebenarnya ada sesuatu yang sudah lama ingin aku sampaikan.
+    text: `Sebenarnya ada sesuatu yang ingin aku sampaikan.
 
 Aku mungkin bukan orang yang paling pandai merangkai kata, tapi kali ini aku ingin mencoba jujur tentang apa yang aku rasakan.`
   },
