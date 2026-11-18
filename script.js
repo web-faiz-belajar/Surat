@@ -1,467 +1,143 @@
 
-/* =========================================
-   WEB NEMBAK CEWE ❤️
-   JAVASCRIPT - VERSION 2.0
-========================================= */
+const opening = document.getElementById("opening");
+const letter = document.getElementById("letter");
+const result = document.getElementById("result");
 
-/* =========================================
-   1. PENGATURAN WEBSITE
-========================================= */
+const openLetter = document.getElementById("openLetter");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-const CONFIG = {
-  namaPengirim: "Faiz",
-  namaPenerima: "awaa",
+const joke = document.getElementById("joke");
+const counter = document.getElementById("counter");
 
-  // PIN rahasia 4 angka
-  pin: "2026",
+let attempts = 0;
 
-  petunjukPin: "Petunjuk: tahun ini ♡",
-
-  pertanyaan: "Maukah kamu jadi seseorang yang spesial buat aku?"
-};
-
-
-/* =========================================
-   2. ELEMENT WEBSITE
-========================================= */
-
-const $ = (selector) => document.querySelector(selector);
-
-const screens = [...document.querySelectorAll(".screen")];
-
-let pinValue = "";
-let pageIndex = 0;
-
-
-/* =========================================
-   3. ISI SURAT
-========================================= */
-
-const letterPages = [
-  {
-    title: "Boleh aku jujur?",
-    text: `Sebenarnya ada sesuatu yang ingin aku sampaikan.
-
-Aku mungkin bukan orang yang paling pandai merangkai kata, tapi kali ini aku ingin mencoba jujur tentang apa yang aku rasakan.`
-  },
-
-  {
-    title: "Tentang kamu...",
-    text: `Ada hal sederhana dari dirimu yang selalu berhasil membuat hariku terasa lebih menyenangkan.
-
-Aku suka cara kamu menjadi dirimu sendiri. Semakin mengenalmu, semakin aku ingin mengenalmu lebih jauh.`
-  },
-
-  {
-    title: "Ini perasaanku",
-    text: `Aku nggak tahu bagaimana perasaanmu, dan aku nggak ingin membuatmu merasa terbebani.
-
-Aku cuma ingin menyampaikan isi hatiku dengan tulus.
-
-Apa pun jawabanmu nanti, aku akan tetap menghargainya.`
-  }
+const jokes = [
+  "Eh, jangan yang itu dong 😭",
+  "Yakin nih? Pikir lagi wkwk.",
+  "Kok ngejar aku sih? 😂",
+  "Kesempatan kedua masih ada...",
+  "Jangan buru-buru dong 🥺",
+  "Aku belum menyerah!",
+  "Waduh, hampir ketangkap!",
+  "Sedikit lagi nih!",
+  "Oke, aku mulai pasrah 😭",
+  "Baiklah, kali ini aku diam."
 ];
 
+// BUKA SURAT
+openLetter.addEventListener("click", () => {
+  opening.classList.add("hidden");
+  letter.classList.remove("hidden");
+});
 
-/* =========================================
-   4. MENGATUR IDENTITAS
-========================================= */
+// TOMBOL GAK MAU
+noBtn.addEventListener("click", () => {
 
-$("#recipientName").textContent = CONFIG.namaPenerima;
+  if (attempts < 10) {
 
-$("#senderName").textContent =
-  CONFIG.namaPengirim + " ♡";
+    attempts++;
 
-$("#pinHint").textContent = CONFIG.petunjukPin;
+    joke.textContent = jokes[attempts - 1];
 
-$("#questionTitle").textContent =
-  CONFIG.pertanyaan;
+    counter.textContent =
+      `Percobaan: ${attempts}/10`;
 
+    if (attempts === 10) {
 
-/* =========================================
-   5. PINDAH HALAMAN
-========================================= */
+      noBtn.textContent = "Sekarang bisa ditekan 😭";
 
-function showScreen(id) {
+      noBtn.style.position = "static";
+      noBtn.style.left = "auto";
+      noBtn.style.top = "auto";
 
-  screens.forEach(screen => {
+      return;
+    }
 
-    screen.classList.toggle(
-      "active",
-      screen.id === id
+    const area = document.getElementById("buttons");
+
+    const maxX = Math.max(
+      0,
+      area.clientWidth - noBtn.offsetWidth
     );
 
-  });
+    const maxY = 90;
 
-}
+    noBtn.style.position = "absolute";
 
+    noBtn.style.left =
+      Math.random() * maxX + "px";
 
-/* =========================================
-   6. SISTEM PIN
-========================================= */
-
-function updateDots() {
-
-  $("#pinDots")
-    .querySelectorAll("i")
-    .forEach((dot, index) => {
-
-      dot.classList.toggle(
-        "filled",
-        index < pinValue.length
-      );
-
-    });
-
-}
-
-
-function resetPin() {
-
-  pinValue = "";
-
-  updateDots();
-
-}
-
-
-function checkPin() {
-
-  if (pinValue === CONFIG.pin) {
-
-    resetPin();
-
-    pageIndex = 0;
-
-    renderLetter();
-
-    showScreen("letterScreen");
+    noBtn.style.top =
+      Math.random() * maxY + "px";
 
   } else {
 
-    $("#pinHint").textContent =
-      "PIN belum tepat. Coba sekali lagi, ya ♡";
-
-    $("#pinHint").style.color = "#d94f78";
-
-    resetPin();
+    showResult(false);
 
   }
+});
 
+// TOMBOL MAU
+yesBtn.addEventListener("click", () => {
+  showResult(true);
+});
+
+// HASIL PILIHAN
+function showResult(accepted) {
+
+  letter.classList.add("hidden");
+  result.classList.remove("hidden");
+
+  const title =
+    document.getElementById("resultTitle");
+
+  const message =
+    document.getElementById("resultMessage");
+
+  if (accepted) {
+
+    title.textContent = "Terima kasih ❤️";
+
+    message.textContent =
+      "Aku senang kamu mau membuka kesempatan " +
+      "untuk berbicara lagi. Aku ingin membuktikan " +
+      "perubahan lewat tindakan, bukan sekadar kata-kata.";
+
+  } else {
+
+    title.textContent = "Terima kasih sudah jujur.";
+
+    message.textContent =
+      "Aku menghargai keputusanmu. Maaf atas " +
+      "kesalahanku dan semoga kamu selalu bahagia.";
+
+  }
 }
 
+// ANIMASI HATI
+const hearts = document.getElementById("hearts");
 
-/* =========================================
-   7. KEYPAD PIN
-========================================= */
+setInterval(() => {
 
-$("#startBtn").addEventListener("click", () => {
+  const heart = document.createElement("span");
 
-  showScreen("pinScreen");
+  heart.className = "floating-heart";
+  heart.textContent = "♥";
 
-});
+  heart.style.left =
+    Math.random() * 100 + "vw";
 
+  heart.style.fontSize =
+    (12 + Math.random() * 20) + "px";
 
-$("#keypad").addEventListener("click", (event) => {
+  heart.style.animationDuration =
+    (5 + Math.random() * 5) + "s";
 
-  const key = event.target.closest("button")?.dataset.key;
+  hearts.appendChild(heart);
 
-  if (!key) return;
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
 
-  if (key === "clear") {
-
-    pinValue = pinValue.slice(0, -1);
-
-  }
-
-  else if (key === "enter") {
-
-    checkPin();
-
-    return;
-
-  }
-
-  else if (pinValue.length < 4) {
-
-    pinValue += key;
-
-  }
-
-  updateDots();
-
-  if (pinValue.length === 4) {
-
-    setTimeout(checkPin, 220);
-
-  }
-
-});
-
-
-/* PIN DARI KEYBOARD */
-
-document.addEventListener("keydown", (event) => {
-
-  if (!$("#pinScreen").classList.contains("active")) {
-    return;
-  }
-
-  if (/^[0-9]$/.test(event.key) && pinValue.length < 4) {
-
-    pinValue += event.key;
-
-  }
-
-  else if (event.key === "Backspace") {
-
-    pinValue = pinValue.slice(0, -1);
-
-  }
-
-  else if (event.key === "Enter") {
-
-    checkPin();
-
-    return;
-
-  }
-
-  updateDots();
-
-  if (pinValue.length === 4) {
-
-    setTimeout(checkPin, 220);
-
-  }
-
-});
-
-
-/* =========================================
-   8. TOMBOL KEMBALI
-========================================= */
-
-document.querySelectorAll("[data-back]")
-  .forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      resetPin();
-
-      showScreen(button.dataset.back);
-
-    });
-
-  });
-
-
-/* =========================================
-   9. SISTEM SURAT
-========================================= */
-
-function renderLetter() {
-
-  const page = letterPages[pageIndex];
-
-  $("#letterTitle").textContent = page.title;
-
-  $("#letterText").textContent = page.text;
-
-  $("#letterCount").textContent =
-    `0${pageIndex + 1} / 0${letterPages.length}`;
-
-  $("#nextLetterBtn").innerHTML =
-    pageIndex === letterPages.length - 1
-      ? 'Lanjut ke pertanyaan <span>♡</span>'
-      : 'Lanjut <span>→</span>';
-
-}
-
-
-$("#nextLetterBtn").addEventListener("click", () => {
-
-  if (pageIndex < letterPages.length - 1) {
-
-    pageIndex++;
-
-    renderLetter();
-
-  }
-
-  else {
-
-    showScreen("questionScreen");
-
-  }
-
-});
-
-
-/* =========================================
-   10. TOMBOL YES
-========================================= */
-
-$("#yesBtn").addEventListener("click", () => {
-
-  showScreen("yesScreen");
-
-  launchHearts();
-
-});
-
-
-/* =========================================
-   11. TOMBOL NO - KABUR!
-========================================= */
-
-const noBtn = $("#noBtn");
-
-const answerArea = $(".answer-buttons");
-
-function moveNoButton(event) {
-
-  event.preventDefault();
-
-  const area = answerArea.getBoundingClientRect();
-
-  const button = noBtn.getBoundingClientRect();
-
-  const maxX = Math.max(
-    0,
-    (area.width - button.width) / 2 - 5
-  );
-
-  const maxY = 65;
-
-  const randomX =
-    Math.random() * maxX * 2 - maxX;
-
-  const randomY =
-    Math.random() * maxY * 2 - maxY;
-
-  noBtn.style.transform =
-    `translate(${randomX}px, ${randomY}px)`;
-
-}
-
-
-// Kabur saat didekati mouse
-noBtn.addEventListener(
-  "pointerenter",
-  moveNoButton
-);
-
-
-// Kabur saat disentuh di HP
-noBtn.addEventListener(
-  "pointerdown",
-  moveNoButton
-);
-
-
-/* =========================================
-   12. ANIMASI HATI
-========================================= */
-
-function launchHearts() {
-
-  const symbols = ["♡", "♥", "✦", "✿"];
-
-  for (let i = 0; i < 25; i++) {
-
-    const item = document.createElement("span");
-
-    item.textContent =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    item.style.cssText = `
-      position: fixed;
-      left: ${Math.random() * 100}vw;
-      top: 105vh;
-      z-index: 10;
-      color: #fff;
-      font-size: ${16 + Math.random() * 22}px;
-      pointer-events: none;
-      transition:
-        transform ${2 + Math.random() * 2}s linear,
-        opacity 3s;
-    `;
-
-    document.body.appendChild(item);
-
-    requestAnimationFrame(() => {
-
-      item.style.transform =
-        `translateY(-115vh) rotate(${Math.random() * 240 - 120}deg)`;
-
-      item.style.opacity = "0";
-
-    });
-
-    setTimeout(() => {
-
-      item.remove();
-
-    }, 4200);
-
-  }
-
-}
-
-
-/* =========================================
-   13. HALAMAN JAWABAN NO
-========================================= */
-
-// Tetap menghargai keputusan penerima.
-$("#finishBtn").addEventListener("click", () => {
-
-  showScreen("welcomeScreen");
-
-});
-
-
-/* =========================================
-   14. SALIN PESAN
-========================================= */
-
-$("#copyReplyBtn").addEventListener("click", async () => {
-
-  const message = $("#replyInput").value.trim();
-
-  if (!message) {
-
-    $("#copyStatus").textContent =
-      "Tulis pesanmu dulu, ya ♡";
-
-    return;
-
-  }
-
-  try {
-
-    await navigator.clipboard.writeText(message);
-
-    $("#copyStatus").textContent =
-      "Pesan berhasil disalin ♡";
-
-  }
-
-  catch {
-
-    $("#replyInput").select();
-
-    $("#copyStatus").textContent =
-      "Tekan lama teks lalu pilih Salin.";
-
-  }
-
-});
-
-
-/* =========================================
-   15. SELESAI
-========================================= */
-
-console.log("Web Nembak Cewe berhasil dijalankan ❤️");
+}, 700);
