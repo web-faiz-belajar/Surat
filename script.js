@@ -25,93 +25,61 @@ const jokes = [
   "Baiklah, kali ini aku diam."
 ];
 
-// BUKA SURAT
 openLetter.addEventListener("click", () => {
   opening.classList.add("hidden");
   letter.classList.remove("hidden");
 });
 
-// TOMBOL GAK MAU
 noBtn.addEventListener("click", () => {
-
   if (attempts < 10) {
-
+    joke.textContent = jokes[attempts];
     attempts++;
 
-    joke.textContent = jokes[attempts - 1];
-
-    counter.textContent =
-      `Percobaan: ${attempts}/10`;
-
     if (attempts === 10) {
-
       noBtn.textContent = "Sekarang bisa ditekan 😭";
-
       noBtn.style.position = "static";
       noBtn.style.left = "auto";
       noBtn.style.top = "auto";
-
       return;
     }
 
     const area = document.getElementById("buttons");
 
-    const maxX = Math.max(
-      0,
-      area.clientWidth - noBtn.offsetWidth
-    );
-
-    const maxY = 90;
-
     noBtn.style.position = "absolute";
-
     noBtn.style.left =
-      Math.random() * maxX + "px";
+      Math.random() *
+      Math.max(0, area.clientWidth - noBtn.offsetWidth) + "px";
 
-    noBtn.style.top =
-      Math.random() * maxY + "px";
-
+    noBtn.style.top = Math.random() * 90 + "px";
   } else {
-
-    showResult(false);
-
+    saveChoice("Gak mau");
   }
 });
 
-// TOMBOL MAU
 yesBtn.addEventListener("click", () => {
-  showResult(true);
+  saveChoice("Mau");
 });
 
-// HASIL PILIHAN
-function showResult(accepted) {
+function saveChoice(choice) {
+  localStorage.setItem("pilihanDia", choice);
+  showResult(choice);
+}
 
+function showResult(choice) {
   letter.classList.add("hidden");
   result.classList.remove("hidden");
 
-  const title =
-    document.getElementById("resultTitle");
+  const title = document.getElementById("resultTitle");
+  const message = document.getElementById("resultMessage");
 
-  const message =
-    document.getElementById("resultMessage");
-
-  if (accepted) {
-
+  if (choice === "Mau") {
     title.textContent = "Terima kasih ❤️";
-
     message.textContent =
-      "Aku senang kamu mau membuka kesempatan " +
-      "untuk berbicara lagi. Aku ingin membuktikan " +
-      "perubahan lewat tindakan, bukan sekadar kata-kata.";
-
+      "Aku senang kamu mau membuka kesempatan untuk berbicara lagi.";
   } else {
-
     title.textContent = "Terima kasih sudah jujur.";
-
     message.textContent =
-      "Aku menghargai keputusanmu. Maaf atas " +
-      "kesalahanku dan semoga kamu selalu bahagia.";
-
+      "Aku menghargai keputusanmu. Semoga kamu selalu bahagia.";
   }
 }
 
@@ -119,25 +87,15 @@ function showResult(accepted) {
 const hearts = document.getElementById("hearts");
 
 setInterval(() => {
-
   const heart = document.createElement("span");
 
   heart.className = "floating-heart";
   heart.textContent = "♥";
-
-  heart.style.left =
-    Math.random() * 100 + "vw";
-
-  heart.style.fontSize =
-    (12 + Math.random() * 20) + "px";
-
-  heart.style.animationDuration =
-    (5 + Math.random() * 5) + "s";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
   hearts.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 10000);
-
+  setTimeout(() => heart.remove(), 10000);
 }, 700);
