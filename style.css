@@ -7,6 +7,7 @@
 
 body {
   min-height: 100vh;
+
   background: linear-gradient(
     135deg,
     #100e20,
@@ -52,6 +53,7 @@ body {
   color: #ff8eae;
   font-size: 65px;
   margin-bottom: 15px;
+
   animation: beat 1.5s infinite;
 }
 
@@ -89,10 +91,17 @@ button {
   border: none;
   padding: 14px 25px;
   border-radius: 30px;
+
   font-size: 14px;
   font-weight: bold;
+
   cursor: pointer;
   transition: 0.25s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 #openLetter,
@@ -123,11 +132,6 @@ button:active {
   line-height: 1.9;
   margin-bottom: 20px;
   font-size: 15px;
-}
-
-.herName {
-  color: #ffabc5;
-  font-weight: bold;
 }
 
 .signature {
@@ -164,26 +168,35 @@ button:active {
   align-items: center;
 
   gap: 15px;
-  min-height: 65px;
-  margin-top: 20px;
+
+  min-height: 160px;
+  margin-top: 15px;
+}
+
+#yesBtn {
+  position: relative;
+  z-index: 2;
 }
 
 #noBtn {
   background: #343044;
   color: white;
   border: 1px solid #66556f;
+
+  position: relative;
+  z-index: 3;
 }
 
 #joke {
   color: #ff9fc1;
   font-size: 13px;
   min-height: 22px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
-#counter {
-  font-size: 11px;
-  color: #a99aaf;
+#status {
+  font-size: 12px;
+  color: #b9a9c2;
 }
 
 .result {
